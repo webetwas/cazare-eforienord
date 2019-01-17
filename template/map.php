@@ -1,0 +1,1 @@
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1205.4088164222414!2d28.636701036872317!3d44.06350399389587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40bae0dc6f526d25%3A0x9694543e88157e28!2sStrada+Panselelor+10%2C+Eforie+Nord+905350!5e0!3m2!1sro!2sro!4v1508489898584" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
