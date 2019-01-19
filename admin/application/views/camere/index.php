@@ -228,9 +228,9 @@
 								<div class="form-group" id="data_5">
 										<label>De la data - data</label>
 										<div class="input-daterange input-group" id="datepicker" style="width:100%;">
-												<input type="text" class="form-control" name="date_start" value="" required />
+												<input type="text" name="date_start" class="form-control datepicker" value="" data-date-format="dd/mm/yy" required>
 												<span class="input-group-addon">pana la</span>
-												<input type="text" class="form-control" name="date_end" value="" required />
+												<input type="text" name="date_end" class="form-control datepicker" value="" data-date-format="dd/mm/yy" required>												
 										</div>
 								</div>
 								

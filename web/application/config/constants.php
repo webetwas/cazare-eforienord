@@ -94,8 +94,8 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
  * [define CONSTANTS]
  *
  */
-define("BASE_URL", "https://cazare-eforienord.com/");
-define("SITE_URL", "https://cazare-eforienord.com/");
+define("BASE_URL", "http://localhost/2019/cazare-eforienord/web/");
+define("SITE_URL", "http://localhost/2019/cazare-eforienord/web/");
 
 define("TBL_OWNER", "be_owner");
 define("TBL_COMPANY", "be_ocompany");

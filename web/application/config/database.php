@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'cazareef_user',
-	'password' => '1t3q34#=m-k_',
-	'database' => DATABASE_NAME,
+	'username' => 'root',
+	'password' => '',
+	'database' => 'cazareef_database',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -24,7 +24,9 @@
 		<link href="<?=base_url()?>public/assets/css/cstyles.css" rel="stylesheet">
     <!-- FooTable -->
     <link href="<?=base_url()?>public/assets/css/plugins/footable/footable.core.css" rel="stylesheet">
-		<link rel="stylesheet" href="<?=base_url();?>public/assets/scripts/fancybox3/jquery.fancybox.css">	
+        <link rel="stylesheet" href="<?=base_url();?>public/assets/scripts/fancybox3/jquery.fancybox.css">  
+        <link rel="stylesheet" href="<?=base_url();?>public/assets/css/plugins/picker/default.css"> 
+		<link rel="stylesheet" href="<?=base_url();?>public/assets/css/plugins/picker/default.date.css">	
 
 
 

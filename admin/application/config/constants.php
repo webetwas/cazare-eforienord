@@ -96,8 +96,8 @@ define("CORE_APP_VER", "3.1.5");
  * CONSTANTS
  *
  */
-define("BASE_URL", "https://cazare-eforienord.com/admin");
-define("SITE_URL", "https://cazare-eforienord.com/");
+define("BASE_URL", "http://localhost/2019/cazare-eforienord/admin/");
+define("SITE_URL", "http://localhost/2019/cazare-eforienord/web/");
 define("TBL_OWNER", "be_owner");
 define("TBL_COMPANY", "be_ocompany");
 define("TBL_USERS", "be_users");

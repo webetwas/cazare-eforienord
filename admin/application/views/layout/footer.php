@@ -12,7 +12,9 @@
     
 		
 		<!-- Data picker -->
-		<script src="<?=base_url()?>public/assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+        <script src="<?=base_url()?>public/assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+        <script src="<?=base_url()?>public/assets/js/plugins/datapicker/picker.js"></script>
+		<script src="<?=base_url()?>public/assets/js/plugins/datapicker/picker.date.js"></script>
     <!-- Toastr -->
     <script src="<?=base_url()?>public/assets/js/plugins/toastr/toastr.min.js"></script>	
 		

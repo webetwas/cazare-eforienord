@@ -8,6 +8,9 @@ $(document).ready(function() {
 				e.preventDefault();
 		}
 	});
+	$('.datepicker').pickadate({
+		min: true
+	});
 });
 
 function showloader() { $(".cssload-container").show(); }

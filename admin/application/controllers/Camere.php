@@ -89,7 +89,8 @@ class Camere extends CI_Controller {
 		$breadcrumb["breadcrumb"][1] = array("text" => "Camere", "url" => null);
     $view = (object) [ 'html' => array(
 			0 => (object) ["viewhtml" => "layout/breadcrumb", "viewdata" => $breadcrumb],
-      1 => (object) ["viewhtml" => "camere/index", "viewdata" => $viewdata]
+      1 => (object) ["viewhtml" => "camere/index", "viewdata" => $viewdata],
+      2 => (object) ["viewhtml" => "camere/js_index", "viewdata" => $viewdata]
       ), 'javascript' => null
 			// 'javascript' => array(
       // 1 => (object) ["viewhtml" => "camere/js_index", "viewdata" => null],

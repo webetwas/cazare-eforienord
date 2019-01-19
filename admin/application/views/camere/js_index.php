@@ -1,7 +1,7 @@
 <script src="<?=SITE_URL;?>public/scripts/summernote/summernote.min.js" type="text/javascript"></script>
 
 <script src="<?=base_url();?>public/assets/scripts/fancybox3/jquery.fancybox.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <?php if(!is_null($items)): ?>
 <script type="text/javascript">
 
@@ -242,12 +242,12 @@ items = JSON.parse(itemsjs);
 $(document).ready(function () {
 	
 	//datepicker
-	$('#data_5 .input-daterange').datepicker({
-			keyboardNavigation: false,
-			forceParse: false,
-			autoclose: true,
-			format: "dd-mm-yyyy"
-	});
+	// $('#data_5 .input-daterange').datepicker({
+	// 		keyboardNavigation: false,
+	// 		forceParse: false,
+	// 		autoclose: true,
+	// 		format: "dd-mm-yyyy"
+	// });
 	
 	<?php if(!is_null($items)): ?>
 	// load Intervale on.ready
