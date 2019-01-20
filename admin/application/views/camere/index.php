@@ -248,3 +248,42 @@
 				</div>
 		</div>
 </div>
+
+<div class="modal inmodal" id="edit_camera" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+		<div class="modal-content animated bounceIn">
+						<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								<i class="fa fa-calendar modal-icon"></i>
+								<h4 class="modal-title" id="mpcmt" style="color:#1ab394;">Modal title edit</h4>
+						</div>
+						<div class="modal-body">
+								<!--<p><strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+										printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+										remaining essentially unchanged.</p>-->
+												
+									
+							<form method="POST" id="form_mpc">
+								<div class="form-group" id="data_5">
+										<label>De la data - data</label>
+										<div class="input-daterange input-group" id="datepicker" style="width:100%;">
+												<input type="text" name="date_start" class="form-control datepicker" value="" data-date-format="dd/mm/yy" required>
+												<span class="input-group-addon">pana la</span>
+												<input type="text" name="date_end" class="form-control datepicker" value="" data-date-format="dd/mm/yy" required>												
+										</div>
+								</div>
+								
+								<div class="form-group">
+								<label>Pret aferent acestui interval(pret pentru o zi de cazare)</label> 					
+									<input type="number" placeholder="Pret in ron" name="pret" class="form-control" required>
+								</div>
+							</form>
+							
+						</div>
+						<div class="modal-footer">
+								<button type="button" class="btn btn-white" data-dismiss="modal">Anuleaza</button>
+								<button type="button" class="btn btn-primary" onClick="return planIntervaleAjax();">Mai departe</button>
+						</div>
+				</div>
+		</div>
+</div>

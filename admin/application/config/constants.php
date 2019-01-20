@@ -167,6 +167,8 @@ define("AJXELEMENTMOVED", "ajxmoveelement");
 define("AJXTOGGLE", "ajaxtoggle");
 define("PLAN_INTERVALE", "plan_intervale");
 define("LOAD_INTERVALE", "load_intervale");
+define("GET_INTERVAL_BY_ID", "get_interval_by_id");
+define("EDIT_INTERVAL", "edit_interval");
 define("DELETE_INTERVAL", "delete_interval");
 define("OFFERS_TOGGLE", "offers_toggle");
 define("UPDATE_OFFER", "update_offer");

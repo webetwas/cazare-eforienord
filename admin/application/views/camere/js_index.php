@@ -69,6 +69,64 @@ function planIntervaleAjax() {
   });
 }
 
+function get_interval_by_id(plan_id_interval) {
+	
+  var url = "<?=base_url().$controller_ajax;?>get_interval_by_id/id/" +plan_id_interval;
+  $.ajax({
+    url: url,
+    dataType: "JSON",
+    type: 'GET',
+    beforeSend: function() {
+			showloader();
+    },
+    success: function( data ) {
+      if(data.status == 1) {
+				console.log("yyyyyyyyyyyyyyyyy",data.output.date_start)
+				$("#edit_camera input[name='date_start']").val(data.output.date_start)
+				$("#edit_camera input[name='date_end']").val(data.output.date_end)
+				$("#edit_camera input[type='number']").val(data.output.pret)
+				loadIntervaleAjax([ plan_id ]);
+				hideloader();
+
+      } else if(data.status == 0) {
+        //
+      }
+
+    }
+  });	
+}
+
+function editintervalAjax(plan_id_interval) {
+	
+  var url = "<?=base_url().$controller_ajax;?>edit_interval/id/" +plan_id_interval;
+  $.ajax({
+    url: url,
+    dataType: "JSON",
+    type: 'GET',
+    beforeSend: function() {
+			showloader();
+    },
+    success: function( data ) {
+      if(data.status == 1) {
+				
+				loadIntervaleAjax([ plan_id ]);
+				hideloader();
+
+      } else if(data.status == 0) {
+        //
+      }
+
+    }
+  });	
+}
+
+function editinterval(plan_id_val, plan_act_val, plan_id_interval) {
+	
+	setPlanValues(plan_id_val, plan_act_val);
+	
+	editintervalAjax(plan_id_interval);
+}
+
 /**
  * deleteIntervalAjax
  *

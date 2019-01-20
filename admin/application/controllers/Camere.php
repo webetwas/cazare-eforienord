@@ -410,6 +410,7 @@ class Camere extends CI_Controller {
 								<th>Pret(/zi)</th>
 								<th>Activitate</th>
 								<th></th>
+								<th></th>
 								</tr>
 								</thead>';
 								$html .= "<tbody>";
@@ -434,6 +435,9 @@ class Camere extends CI_Controller {
 									<td>
 										' .($date_today > strtotime(date_format(date_create($interval->date_end), 'Y-m-d')) ? '<strong style="color:red;">Sfarsit</strong>' : '<strong style="color:green;">In desfasurare</strong>'). '
 									</td>
+									</td>';
+									$html.='<td>
+									<button class="btn btn-info" data-toggle="modal" data-target="#edit_camera" title="Editare Planificare" onClick="return get_interval_by_id(' .$interval->id_interval. ');"><i class="fa fa-pencil"></i> Editare</button>
 									</td>';
 									$html .= '<td>
 									<button class="btn btn-danger btn-xs ahrefaskconfirm" title="Sterge interval" onClick="return deleteInterval(' .$item. ', \'delete\', ' .$interval->id_interval. ');"><i class="fa fa-trash-o"></i> Sterge</button>									
@@ -468,7 +472,44 @@ class Camere extends CI_Controller {
 					header("Content-Type: application/json");
 					echo json_encode($res);
 				break;
+
+				case GET_INTERVAL_BY_ID:
+					$res = array("status" => 0);
+					$data = array(
+						"pret" => 222
+					);
+					
+					$id_interval = intval($this->uriseg->id);
+					if($id_interval) {
+						$getinterval= $this->_Item->msqlGetAll('camere_intervale', array("id_interval" => $id_interval));
+						if($getinterval){
+							$res["status"] = 1;
+							$res["output"] = $getinterval[0];
+						}
+					}
+
+					header("Content-Type: application/json");
+					echo json_encode($res);
 				
+				break;
+
+				case EDIT_INTERVAL:
+					$res = array("status" => 0);
+					$data = array(
+						"pret" => 222
+					);
+					
+					$id_interval = intval($this->uriseg->id);
+					if($id_interval) {
+						$update = $this->_Item->msqlUpdate('camere_intervale',$data, array("c" => "id_interval", "v" => $id_interval));
+						if($update)
+							$res["status"] = 1;
+					}
+
+					header("Content-Type: application/json");
+					echo json_encode($res);
+				break;	
+
 				case DELETE_INTERVAL:
 					
 					$res = array("status" => 0);
