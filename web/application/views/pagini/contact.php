@@ -113,43 +113,7 @@
 
 			</div>
 
-			<!-- /row -->
-
-			<div class="row">
-
-					<div class="col-sm-12 col-md-12 col-lg-12">
-
-							<div class="row">
-
-									<div class="col-sm-6 col-md-6 col-lg-6"></div>
-
-									<!-- /col-md-6 -->
-
-									<div class="col-sm-6 col-md-6 col-lg-6">
-
-										<p>
-											<?=$company->banca_banca?><br />
-											<?=$company->banca_iban?>
-										</p>
-
-									</div>
-
-									<!-- /col-md-6 -->
-
-							</div>
-
-							<!-- /row -->
-
-					</div>
-
-					<!-- /col-12 -->
-
-			</div>
-
-			<!-- /row -->
-
-
-			
+			<!-- /row -->			
 
 		<?php if(!is_null($company->pc_nume) && !is_null($company->pc_telefon)): ?>
 
@@ -236,6 +200,39 @@
 									<div class="col-sm-6 col-md-6 col-lg-6">
 
 										<p><i class="fa fa-envelope-o"></i> <?=$company->pc_email?></p>
+
+									</div>
+
+									<!-- /col-md-6 -->
+
+							</div>
+
+							<!-- /row -->
+
+					</div>
+
+					<!-- /col-12 -->
+
+			</div>
+
+			<!-- /row -->
+
+				<div class="row">
+
+					<div class="col-sm-12 col-md-12 col-lg-12">
+
+							<div class="row">
+
+									<div class="col-sm-6 col-md-6 col-lg-6"></div>
+
+									<!-- /col-md-6 -->
+
+									<div class="col-sm-6 col-md-6 col-lg-6">
+
+										<p>
+											<?=$company->banca_banca?><br />
+											<?=$company->banca_iban?>
+										</p>
 
 									</div>
 
