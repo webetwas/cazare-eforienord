@@ -150,7 +150,21 @@
 
 		</div>
 
-		
+		<div class="row">
+			
+			<?php foreach($camera->camere_intervale as $keycamere => $c): ?>			
+				<div class="col-lg-12">
+					<?php				
+						echo("<b>".date_format(date_create($c->date_start), 'd-m-Y'))."</b> - ";
+						echo("<b>".date_format(date_create($c->date_end), 'd-m-Y'))."</b>";
+						echo " Pret: ";
+						echo("<b>".$c->pret)."</b>";
+					?>	
+					<button type="submit" name="d_submit" class="btn btn-primary">Rezerva acum!</button>
+					<br>				
+				</div>
+			<?php endforeach; ?>
+		</div>
 
 
 

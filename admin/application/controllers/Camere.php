@@ -495,8 +495,18 @@ class Camere extends CI_Controller {
 
 				case EDIT_INTERVAL:
 					$res = array("status" => 0);
+					$date_start = !empty($this->input->post("date_start")) ? date_format(date_create($this->input->post("date_start")), 'Y-m-d') : null;
+					$date_end   = !empty($this->input->post("date_end")) ? date_format(date_create($this->input->post("date_end")), 'Y-m-d') : null;
+					$pret       = !empty($this->input->post("pret")) ? $this->input->post("pret") : null;
+					$plan_id    = !empty($this->input->post("plan_id")) ? $this->input->post("plan_id") : null;
+					$plan_act   = !empty($this->input->post("plan_act")) ? $this->input->post("plan_act") : null;
+
 					$data = array(
-						"pret" => 222
+						"date_start"   => $date_start,
+						"date_end"     => $date_end,
+						"date_startux" => strtotime($date_start),
+						"date_endux"   => strtotime($date_end),
+						"pret"         => $pret
 					);
 					
 					$id_interval = intval($this->uriseg->id);

@@ -77,6 +77,7 @@ class Camere extends CI_Controller {
 
 		
 		$camera = $this->_Object->GetItemWhttp_id($this->ControllerObject, $http_id);
+
 		if($camera) {
 			$camera->video = null;
 			
@@ -103,6 +104,16 @@ class Camere extends CI_Controller {
 					$camera_video2->i = $this->_Object->msqlGet('galerie_video_images', array("id_item" => $camera_video2->id_item));
 					
 					$camera->video2 = $camera_video2;
+				}
+			}
+
+			if($camera->id_item) {
+				
+				$camere_intervale = $this->_Object->msqlGetAll('camere_intervale', array("id_item" => $camera->id_item));
+				
+				if($camere_intervale) {					
+					$camera->camere_intervale = $camere_intervale;
+					
 				}
 			}
 			

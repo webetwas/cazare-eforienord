@@ -36,7 +36,7 @@ function setPlan(plan_id_val, plan_act_val)
 }
 
 function planIntervaleAjax() {
-	checkModalInputs();
+	checkModalInputs("myModalPlanifcamera");
 	
   var mpc_data = new FormData($("#form_mpc")[0]);
   mpc_data.append("plan_id", plan_id);
@@ -69,6 +69,42 @@ function planIntervaleAjax() {
   });
 }
 
+function editIntervaleAjax() {
+	checkModalInputs("edit_camera");
+	var mpc_data = new FormData($("#edit_camera #form_mpc")[0]);
+	var plan_id=$("#edit_camera input[name='plan_id']").val()
+	var id_interval=$("#edit_camera input[name='plan_id_interval']").val()
+	setPlan(plan_id,"edit");
+  mpc_data.append("plan_id", plan_id);
+  mpc_data.append("plan_act", plan_act);	
+	
+  var url = "<?=base_url().$controller_ajax;?>edit_interval/id/" +id_interval;
+  $.ajax({
+    url: url,
+    dataType: "JSON",
+    cache: false,
+    contentType: false,
+    processData: false,
+    type: 'POST',
+		data: mpc_data,
+    // beforeSend: function() {
+			// showloader();
+    // },
+    success: function( data ) {
+      if(data.status == 1) {				
+				$('#edit_camera').modal('hide');
+				loadIntervaleAjax([ plan_id ]);
+				
+				hideloader();
+
+      } else if(data.status == 0) {
+      	$('#edit_camera').modal('hide');
+        //
+      }
+    }
+  });
+}
+
 function get_interval_by_id(plan_id_interval) {
 	
   var url = "<?=base_url().$controller_ajax;?>get_interval_by_id/id/" +plan_id_interval;
@@ -81,10 +117,21 @@ function get_interval_by_id(plan_id_interval) {
     },
     success: function( data ) {
       if(data.status == 1) {
-				console.log("yyyyyyyyyyyyyyyyy",data.output.date_start)
-				$("#edit_camera input[name='date_start']").val(data.output.date_start)
-				$("#edit_camera input[name='date_end']").val(data.output.date_end)
+				
+				const date_start = new Date(data.output.date_start); 
+				const day_start = date_start.toLocaleString('en-us', { day: 'numeric' });
+				const month_start = date_start.toLocaleString('en-us', { month: 'long' });
+				const year_start = date_start.toLocaleString('en-us', { year: 'numeric' });
+
+				const date_end = new Date(data.output.date_end); 
+				const day_end = date_end.toLocaleString('en-us', { day: 'numeric' });
+				const month_end = date_end.toLocaleString('en-us', { month: 'long' });
+				const year_end = date_end.toLocaleString('en-us', { year: 'numeric' });
+				$("#edit_camera input[name='date_start']").val(day_start+" "+month_start+","+year_start)
+				$("#edit_camera input[name='date_end']").val(day_end+" "+month_end+","+year_end)
 				$("#edit_camera input[type='number']").val(data.output.pret)
+				$("#edit_camera input[name='plan_id']").val(data.output.id_item)
+				$("#edit_camera input[name='plan_id_interval']").val(data.output.id_interval)
 				loadIntervaleAjax([ plan_id ]);
 				hideloader();
 
@@ -341,11 +388,11 @@ $(document).ready(function () {
 	<?php endif; ?>
 });
 
-function checkModalInputs() {
+function checkModalInputs(modal_id) {
 	
-	var d_start = $('input[name="date_start"]').val();
-	var d_end = $('input[name="date_end"]').val();
-	var pret = $('input[name="pret"]').val();
+	var d_start = $('#'+modal_id+' input[name="date_start"]').val();
+	var d_end = $('#'+modal_id+' input[name="date_end"]').val();
+	var pret = $('#'+modal_id+' input[name="pret"]').val();
 
 	
 	// if(!Date.parse(d_start) || !Date.parse(d_end)) {

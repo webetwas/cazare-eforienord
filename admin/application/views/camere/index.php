@@ -216,7 +216,7 @@
 						<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 								<i class="fa fa-calendar modal-icon"></i>
-								<h4 class="modal-title" id="mpcmt" style="color:#1ab394;">Modal title</h4>
+								<h4 class="modal-title" id="mpcmt" style="color:#1ab394;">Adaugare planificare</h4>
 						</div>
 						<div class="modal-body">
 								<!--<p><strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
@@ -255,7 +255,7 @@
 						<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 								<i class="fa fa-calendar modal-icon"></i>
-								<h4 class="modal-title" id="mpcmt" style="color:#1ab394;">Modal title edit</h4>
+								<h4 class="modal-title" id="mpcmt" style="color:#1ab394;">Editare planificare</h4>
 						</div>
 						<div class="modal-body">
 								<!--<p><strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
@@ -277,12 +277,14 @@
 								<label>Pret aferent acestui interval(pret pentru o zi de cazare)</label> 					
 									<input type="number" placeholder="Pret in ron" name="pret" class="form-control" required>
 								</div>
+								<input type="hidden" name="plan_id" class="form-control">
+								<input type="hidden" name="plan_id_interval" class="form-control">
 							</form>
 							
 						</div>
 						<div class="modal-footer">
 								<button type="button" class="btn btn-white" data-dismiss="modal">Anuleaza</button>
-								<button type="button" class="btn btn-primary" onClick="return planIntervaleAjax();">Mai departe</button>
+								<button type="button" class="btn btn-primary" onClick="return editIntervaleAjax();">Mai departe</button>
 						</div>
 				</div>
 		</div>
