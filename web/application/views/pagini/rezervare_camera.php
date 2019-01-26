@@ -13,7 +13,40 @@
 						<?=(!is_null($error) ? '<h3 style="color:red;">' .$error. '</h3>' : "")?>
 						
 						<h1><strong><?=(!is_null($page->p->title_content_ro) ? $page->p->title_content_ro : "")?></strong></h1>
+
             <hr>
+            <div class="row">
+            	<div class="col-lg-12">
+            		<?php 
+            		foreach($camere as $keycamere => $c):
+						if($camere_intervale[$c->id_item]){ ?>
+							<p><?php echo $c->item_name; ?></p>
+							<table>
+								<tr>
+									<th>Nr.crt&nbsp;&nbsp;</th>
+									<th>Data de inceput&nbsp;&nbsp;</th> 
+									<th>Data de sfarsit&nbsp;&nbsp;</th>
+									<th>Pret&nbsp;&nbsp;</th>
+								</tr>
+								<?php foreach($camere_intervale[$c->id_item] as $keycamere => $c): ?>	
+								<?php
+								$i = $keycamere+1;
+								?>									
+								<tr>
+									<td><?php echo $i?></td>
+									<td><?php echo(date_format(date_create($c->date_start), 'd-m-Y'));?></td>
+									<td><?php echo(date_format(date_create($c->date_end), 'd-m-Y'));?></td>
+									<td><?php echo $c->pret;?></td>
+								</tr>						
+							<?php endforeach; ?>
+						</table>
+						<br>
+						<?php
+						}
+					endforeach; ?>            		
+            	</div>
+            </div>
+
 						<form action="<?=base_url()?>rezervari" method="POST" id="submitrezvr">
 						
             <div class="checkout-info row" >

@@ -13,6 +13,7 @@ class Rezervari extends CI_Controller {
 		$this->load->model('Pagini_model', '_Pagini');
 		$this->load->model('Rezervari_model', '_Rezervari');
 		$this->load->model('Sendemail_model', '_Sendemail');
+		$this->load->model('Object_model', '_Object');
 		
 		$this->load->helper('tiny_helper');
 		
@@ -40,7 +41,16 @@ class Rezervari extends CI_Controller {
 		
 		$oferte = $this->_Rezervari->getOferte();
 		if($oferte)
-			$viewdata["oferte"] = $oferte;		
+			$viewdata["oferte"] = $oferte;	
+
+		$camere  = $this->_Object->msqlGetAll('camere', null);
+		if($camere)
+			$viewdata["camere"] = $camere;		
+		foreach($camere as $key => $c):
+			$camere_intervale = $this->_Object->msqlGetAll('camere_intervale', array("id_item" => $c->id_item));
+			if($camere_intervale)
+				$viewdata["camere_intervale"][$c->id_item] = $camere_intervale;			
+		endforeach;	
 		
 		if(isset($_REQUEST["d_submit"])) {
 			
@@ -99,12 +109,12 @@ class Rezervari extends CI_Controller {
 
 				
 				$data = array(
+					"id_camera" => $nrcamere,
 					"numeprenume" => $numeprenume,
 					"telefon" => $telefon,
 					"email" => $email,
 					"adulti" => $adulti,
-					"copii" => $copii,
-					'nrcamere' => $nrcamere,
+					"copii" => $copii,					
 					"d_start" => date_format(date_create($d_start), 'Y-m-d'),
 					"d_end" => date_format(date_create($d_end), 'Y-m-d'),
 					"created_at" => date("Y-m-d H:i:s"),
@@ -113,8 +123,9 @@ class Rezervari extends CI_Controller {
 				
 				// var_dump($this->frontend->user_name->email);die();
 				
-				$this->_Sendemail->newRezervare($data, $this->frontend->user_name->email);
-					$view->html[4] = (object) ["viewhtml" => "pagini/rezervare_camera_success", "viewdata" => $viewdata]; //page.this
+				//$this->_Sendemail->newRezervare($data, $this->frontend->user_name->email);
+				$insert = $this->_Rezervari->msqlInsert('camere_rezervari', $data);
+				$view->html[4] = (object) ["viewhtml" => "pagini/rezervare_camera_success", "viewdata" => $viewdata]; //page.this
 			}
 		endif;		
 	

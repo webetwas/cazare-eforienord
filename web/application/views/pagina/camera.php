@@ -151,19 +151,31 @@
 		</div>
 
 		<div class="row">
-			
-			<?php foreach($camera->camere_intervale as $keycamere => $c): ?>			
-				<div class="col-lg-12">
-					<?php				
-						echo("<b>".date_format(date_create($c->date_start), 'd-m-Y'))."</b> - ";
-						echo("<b>".date_format(date_create($c->date_end), 'd-m-Y'))."</b>";
-						echo " Pret: ";
-						echo("<b>".$c->pret)."</b>";
-					?>	
-					<button type="submit" name="d_submit" class="btn btn-primary">Rezerva acum!</button>
-					<br>				
-				</div>
-			<?php endforeach; ?>
+			<div class="col-lg-12">
+					<table style="width:100%">
+						<tr>
+							<th>Nr.crt</th>
+							<th>Data de inceput</th> 
+							<th>Data de sfarsit</th>
+							<th>Pret</th>
+							<th></th>
+						</tr>
+						<?php foreach($camera->camere_intervale as $keycamere => $c): ?>	
+							<?php
+								$i = $keycamere+1;
+							?>									
+							<tr>
+								<td><?php echo $i?></td>
+								<td><?php echo(date_format(date_create($c->date_start), 'd-m-Y'));?></td>
+								<td><?php echo(date_format(date_create($c->date_end), 'd-m-Y'));?></td>
+								<td><?php echo $c->pret;?></td>
+								<td>
+									<button type="submit" name="d_submit" class="btn btn-primary btn-xs ">Verifica disponibilitatea</button>
+								</td>
+							</tr>						
+						<?php endforeach; ?>
+				</table>
+			</div>
 		</div>
 
 

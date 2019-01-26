@@ -12,7 +12,12 @@
 			<div class="servicebox">
 				<div class="servicebox-content">
 					<h3><a href="<?=base_url()?>camera/<?=$camera->http_id?>"><?=$camera->item_name?></a></h3>
-					<p><?=substr($camera->i_content_ro, 0, 150)?></p>
+					<p style="min-height:145px;">
+					<?php
+						echo substr(strip_tags($camera->i_content_ro),0,150);
+						if($camera->i_content_ro) echo "...";
+					?>						
+					</p>
 					
 				</div><!-- /servicebox-content -->
 				<?php if($camera->i): ?>
