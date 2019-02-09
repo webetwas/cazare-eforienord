@@ -75,14 +75,6 @@
 																				</tr>
 																				<tr>
 																						<td>
-																								<strong>Adresa</strong>
-																						</td>
-																						<td>
-																								<?=$item->adresa?>
-																						</td>
-																				</tr>
-																				<tr>
-																						<td>
 																								<strong>In data:</strong>
 																						</td>
 																						<td>
@@ -135,7 +127,12 @@
 																								<strong>Timp efectiv</strong>
 																						</td>
 																						<td>
-																								<?=($item->timp_efectiv == 1 ? $item->timp_efectiv. ' zi' : $item->timp_efectiv. ' zile')?>
+																								<?=($item->timp_efectiv. ' nopti')?>
+																								<?php
+																									$timp_efectiv = $item->timp_efectiv;
+																									$timp_efectiv += 1;
+																									echo $timp_efectiv." zile";
+																								?>
 																						</td>
 																				</tr>
 																				<tr>

@@ -80,6 +80,9 @@ class Rezervari extends CI_Controller {
 		// FORM - NEW Item - Page
 		$viewdata["form"]->item = (object) ["name" => "item", "prefix" => "it", "segments" => $this->controller_fake. "/item/" .$this->uriseg->item. ($this->uriseg->item == "u" && isset($this->uriseg->id) && !is_null($this->uriseg->id) ? "/id/" .trim(intval($this->uriseg->id)) : "")];
 		$form_submititem = $viewdata["form"]->item->prefix. "submit";//submit<button>	
+		$item = $this->_Item->msqlGet('camere_rezervari', array("id_rezervare" => trim(intval($this->uriseg->id))));
+		$camera = $this->_Item->msqlGet('camere', array("id_item" => $item->id_camera));
+		$viewdata["camera"] = $camera;
     switch($this->uriseg->item)
     {
       case UPDATE:

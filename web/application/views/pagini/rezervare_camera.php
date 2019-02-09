@@ -184,7 +184,9 @@
 												<div class="row">
 
 														<div class="col-sm-8 col-md-8 col-lg-8">
-
+														<input type="text" value="<?=(!is_null($rez->tip_camera) ? $rez->tip_camera : '')?>" class="form-control input-lg" name="tip_camera" readonly>
+														<input type="hidden" value="<?=(!is_null($rez->tip_camera_id) ? $rez->tip_camera_id : '')?>" class="form-control input-lg" name="tip_camera_id">
+															<!--
 															<select class="selectpicker" name="nrcamere">
 																<option class="form-control input-lg" disabled selected>Nr. Camere</option>
 																<option>1</option>
@@ -194,14 +196,16 @@
 																<option>5</option>
 																<option>6</option>
 															</select>
-
+															 -->
 														</div>
 
 														<!-- /col-md-8 -->
 
 														<div class="col-sm-4 col-md-4 col-lg-4">
-
+																	<!--
 																<span class="form-label">Nr. camere</span>
+																 -->
+																<span class="form-label">Tip camera</span>
 
 														</div>
 
@@ -311,6 +315,10 @@
 
 												<!-- /row -->
 
+										</div>
+										<div class="col-sm-12 col-md-12 col-lg-12">
+											Pret total: <?=(!is_null($rez->pret) ? $rez->pret : '')?>
+											<input type="hidden" value="<?=(!is_null($rez->pret) ? $rez->pret : '')?>" class="form-control input-lg" name="total_pret">
 										</div>
 
 										<!-- /col-12 -->

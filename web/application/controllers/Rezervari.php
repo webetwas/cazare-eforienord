@@ -31,7 +31,10 @@ class Rezervari extends CI_Controller {
 			"rez" => (object) [
 				'd_start' => null,
 				'd_end' => null,
-				'camere' => null
+				'camere' => null,
+				'tip_camera' => null,
+				'tip_camera_id' => null,
+				'timp_efectiv' => null
 			]
 		
 		);
@@ -56,10 +59,32 @@ class Rezervari extends CI_Controller {
 			
 			$d_start_home = !empty($this->input->post("d_start")) ? $this->input->post("d_start") : null;
 			$d_end_home   = !empty($this->input->post("d_end")) ? $this->input->post("d_end") : null;
-			
+			$tip_camera   = !empty($this->input->post("tip_camera")) ? $this->input->post("tip_camera") : null;
+			$tip_camera_id   = !empty($this->input->post("tip_camera_id")) ? $this->input->post("tip_camera_id") : null;
+			$pret=0;
+			$camere_intervale  = $this->_Object->msqlGetAll('camere_intervale', array("id_item" => $tip_camera_id));
+			$timp_efectiv = getDaysByDates($d_start_home, $d_end_home);
+			foreach($camere_intervale as $key => $c){
+				$date_start = $c->date_start;
+				$date_end = $c->date_end;
+				$date_start = date_format(date_create($date_start), 'Y-m-d');
+				$date_end = date_format(date_create($date_end), 'Y-m-d');
+				for($i=0;$i<$timp_efectiv;$i++){					
+					$day = $d_start_home;
+					$day = date_format(date_create($day), 'Y-m-d');
+					$day = date('Y-m-d', strtotime($day. ' + '.$i.' days'));
+					//echo $day."<br>";
+					if (($day >= $date_start) && ($day <= $date_end)){
+						$pret+=$c->pret;
+					}
+				}						
+			}		
 			// store for frontend User - d_start, d_end
 			$viewdata["rez"]->d_start = $d_start_home;
 			$viewdata["rez"]->d_end = $d_end_home;
+			$viewdata["rez"]->tip_camera = $tip_camera;
+			$viewdata["rez"]->tip_camera_id = $tip_camera_id;
+			$viewdata["rez"]->pret = $pret;
 		}
 
 		$view = (object) [ 'html' => array(
@@ -105,16 +130,20 @@ class Rezervari extends CI_Controller {
 				$email = !empty($this->input->post("email")) ? $this->input->post("email") : null;
 				$adulti = !empty($this->input->post("adulti")) ? $this->input->post("adulti") : "0";
 				$copii = !empty($this->input->post("copii")) ? $this->input->post("copii") : "0";
-				$nrcamere = !empty($this->input->post("nrcamere")) ? $this->input->post("nrcamere") : null;
+				$tip_camera_id = !empty($this->input->post("tip_camera_id")) ? $this->input->post("tip_camera_id") : null;
+				$total_pret = !empty($this->input->post("total_pret")) ? $this->input->post("total_pret") : null;
+				$timp_efectiv = getDaysByDates($d_start, $d_end);;
 
 				
 				$data = array(
-					"id_camera" => $nrcamere,
+					"id_camera" => $tip_camera_id,
 					"numeprenume" => $numeprenume,
 					"telefon" => $telefon,
 					"email" => $email,
 					"adulti" => $adulti,
 					"copii" => $copii,					
+					"timp_efectiv" => intval($timp_efectiv),				
+					"total" => intval($total_pret),				
 					"d_start" => date_format(date_create($d_start), 'Y-m-d'),
 					"d_end" => date_format(date_create($d_end), 'Y-m-d'),
 					"created_at" => date("Y-m-d H:i:s"),

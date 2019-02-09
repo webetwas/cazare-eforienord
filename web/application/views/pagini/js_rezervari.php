@@ -21,7 +21,7 @@ $('form#submitrezvr').submit(function(e){
 	var adulti = $('select[name="adulti"]').val();
 	var copii = $('select[name="copii"]').val();
 	
-	var nrcamere = $('select[name="nrcamere"]').val();
+	//var nrcamere = $('select[name="nrcamere"]').val();
 	
 	if(!$.isNumeric(adulti) && !$.isNumeric(copii)) {
 		
@@ -30,13 +30,13 @@ $('form#submitrezvr').submit(function(e){
 		e.preventDefault();
 	}
 	
-	if(!$.isNumeric(nrcamere)) {
+	// if(!$.isNumeric(nrcamere)) {
 		
-		console.log(nrcamere);
+	// 	console.log(nrcamere);
 		
-		alert("Completeaza numarul camerelor");
-		e.preventDefault();
-	}
+	// 	alert("Completeaza numarul camerelor");
+	// 	e.preventDefault();
+	// }
 
 });
 

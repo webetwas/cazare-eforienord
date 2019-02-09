@@ -26,6 +26,8 @@
 								<div class="col-lg-4">
 										<input type="text" name="d_end" class="datepicker" value="CHECK OUT" data-date-format="dd/mm/yy" required>
 								</div>
+								<input type="hidden" name="tip_camera" value=<?=$camera->titlu_prezentare?>>
+								<input type="hidden" name="tip_camera_id" value=<?=$camera->id_item?>>
 								<!-- /col-md-2 -->
 
 								<!-- /col-md-2 -->

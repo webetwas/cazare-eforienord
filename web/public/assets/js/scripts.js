@@ -274,7 +274,9 @@ function responsiveSidebar(){
 //Calling Bootstrap Dropdown JS here
 $('.selectpicker').selectpicker();
 //Calling Bootstrap Datepicker JS here
-$('.datepicker').pickadate();
+$('.datepicker').pickadate({
+    min:true,
+});
 
 //Calling all the used functions here
 responsiveSidebar();
