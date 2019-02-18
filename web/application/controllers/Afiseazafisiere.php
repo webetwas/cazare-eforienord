@@ -33,10 +33,12 @@ class Afiseazafisiere extends CI_Controller {
 
 
 		$applicationdata = $this->_Frontend->getOwner();
+		$company = $this->_Frontend->getCompany();
 		$rezervare = $this->_Rezervari->GetRezervare(trim(intval($id_rezervare)));
+		$camera = $this->_Rezervari->msqlGet('camere');
 		if(!$rezervare) exit(show_404());
 		
-		$data_forhtml = array("app" => $applicationdata, "rezervare" => $rezervare);
+		$data_forhtml = array("app" => $applicationdata, "rezervare" => $rezervare,'camera'=>$camera,'company'=>$company);
 		
 		$html = $this->load->view("blocuri/rezervare_pdf", $data_forhtml, true);
 		
@@ -53,7 +55,7 @@ class Afiseazafisiere extends CI_Controller {
 			
 			$mpdf=new mPDF(); 
 			$mpdf->WriteHTML($html);
-			$mpdf->Output();			
+			$mpdf->Output();		
 		}
 	}
 }

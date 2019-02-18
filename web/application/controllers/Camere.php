@@ -145,4 +145,23 @@ class Camere extends CI_Controller {
 			)
 		);
 	}
+
+	public function vericare_perioada_rezervata($d_start_home,$d_end_home,$tip_camera_id){
+		/*Verificare daca perioada este rezervata*/	
+		$camere_rezervari  = $this->_Object->msqlGetAll('camere_rezervari',  array("id_camera" => $tip_camera_id));
+		foreach($camere_rezervari as $key => $c){
+			$date_start = $c->d_start;
+			$date_end = $c->d_end;
+			$date_start = date_format(date_create($date_start), 'Y-m-d');
+			$date_end = date_format(date_create($date_end), 'Y-m-d');
+			$d_start_home =date_format(date_create($d_start_home), 'Y-m-d');
+			$d_end_home =date_format(date_create($d_end_home), 'Y-m-d');				
+			if($date_start<=$d_end_home && $d_start_home<=$date_end && $c->status=="Finalizata"){
+				echo "Camera este ocupata incepand cu data de ".date_format(date_create($date_start), 'd-m-Y')." pana la data de ".date_format(date_create($date_end), 'd-m-Y').".Va rugam alegeti alt interval.";
+			}else{
+				echo "false";
+			}			
+		}
+		/*Verificare daca perioada este rezervata*/	
+	}
 }

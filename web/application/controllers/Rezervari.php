@@ -61,6 +61,7 @@ class Rezervari extends CI_Controller {
 			$d_end_home   = !empty($this->input->post("d_end")) ? $this->input->post("d_end") : null;
 			$tip_camera   = !empty($this->input->post("tip_camera")) ? $this->input->post("tip_camera") : null;
 			$tip_camera_id   = !empty($this->input->post("tip_camera_id")) ? $this->input->post("tip_camera_id") : null;
+			/*Calculare pret*/
 			$pret=0;
 			$camere_intervale  = $this->_Object->msqlGetAll('camere_intervale', array("id_item" => $tip_camera_id));
 			$timp_efectiv = getDaysByDates($d_start_home, $d_end_home);
@@ -78,7 +79,8 @@ class Rezervari extends CI_Controller {
 						$pret+=$c->pret;
 					}
 				}						
-			}		
+			}	
+			/*Calculare pret*/	
 			// store for frontend User - d_start, d_end
 			$viewdata["rez"]->d_start = $d_start_home;
 			$viewdata["rez"]->d_end = $d_end_home;

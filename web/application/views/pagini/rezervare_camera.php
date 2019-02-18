@@ -55,7 +55,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
-									<input type="text" name="d_start" class="datepicker" value="<?=(!is_null($rez->d_start) ? $rez->d_start : 'CHECK IN')?>" data-date-format="dd/mm/yy" required>
+									<input type="text" name="d_start" class="datepicker" value="<?=(!is_null($rez->d_start) ? $rez->d_start : 'CHECK IN')?>" data-date-format="dd/mm/yy" required readonly>
 
                 </div>
 
@@ -63,7 +63,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
-									<input type="text" name="d_end" class="datepicker" value="<?=(!is_null($rez->d_end) ? $rez->d_end : 'CHECK OUT')?>" data-date-format="dd/mm/yy" required>
+									<input type="text" name="d_end" class="datepicker" value="<?=(!is_null($rez->d_end) ? $rez->d_end : 'CHECK OUT')?>" data-date-format="dd/mm/yy" required readonly>
 
                 </div>
 

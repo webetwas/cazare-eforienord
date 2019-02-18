@@ -274,7 +274,7 @@ function responsiveSidebar(){
 //Calling Bootstrap Dropdown JS here
 $('.selectpicker').selectpicker();
 //Calling Bootstrap Datepicker JS here
-$('.datepicker').pickadate({
+$('#fcheckrez .datepicker').pickadate({
     min:true,
 });
 

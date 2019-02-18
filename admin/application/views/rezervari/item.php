@@ -156,7 +156,13 @@
 																		</table>
 																</div>
 														</div>														
-
+														<div class="row m-b-lg m-t-lg">
+														<div class="col-md-4">																
+																<div class="profile-info">
+																	<a href="<?php echo SITE_URL?>afiseazafisiere/confirmare_rezervare/<?=$item->id_rezervare?>/<?=$item->id_rezervare?>" class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Vizualizare PDF </a>
+																</div>
+															</div>
+														</div>
 													</div>
 													
 													<div class="hr-line-dashed"></div>

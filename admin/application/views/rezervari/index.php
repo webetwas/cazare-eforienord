@@ -20,6 +20,7 @@
 																	<th>Nr. crt.</th>
 																	<th>Status cerere</th>
 																	<th></th>
+																	<th></th>
 																	<th>Nume Prenume</th>
 																	<th>Nr. telefon</th>
 																	<th>Data cerere</th>
@@ -46,6 +47,9 @@
 																		</td>
 																		<td>
 																			<a href="<?=base_url().$controller_fake?>/item/u/id/<?=$item->id_rezervare?>" class="btn btn-info"><i class="fa fa fa-search-plus"></i> Vezi rezervare </a>
+																		</td>
+																		<td>
+																			<a href="<?php echo SITE_URL?>afiseazafisiere/confirmare_rezervare/<?=$item->id_rezervare?>/<?=$item->id_rezervare?>" class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Vizualizare PDF </a>
 																		</td>																
 																		<td class="project-title" style="text-decoration:underline;">
 																				<a href="<?=base_url().$controller_fake?>/item/u/id/<?=$item->id_rezervare?>">&nbsp;<?=$item->numeprenume;?>&nbsp;</a>
