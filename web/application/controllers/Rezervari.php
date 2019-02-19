@@ -156,7 +156,10 @@ class Rezervari extends CI_Controller {
 				
 				//$this->_Sendemail->newRezervare($data, $this->frontend->user_name->email);
 				$insert = $this->_Rezervari->msqlInsert('camere_rezervari', $data);
-				$view->html[4] = (object) ["viewhtml" => "pagini/rezervare_camera_success", "viewdata" => $viewdata]; //page.this
+				$viewdata['id_rezervare']=$insert;
+				$viewdata['id_rezervare']=explode("int(",$viewdata['id_rezervare']);;
+				
+				$view->html[4] = (object) ["viewhtml" => "pagini/rezervare_camera_success", "viewdata" => $viewdata,'id_rezervare',$viewdata['id_rezervare']]; //page.this
 			}
 		endif;		
 	

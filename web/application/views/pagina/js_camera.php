@@ -39,23 +39,25 @@ $('form#fcheckrez').submit(function(e){
 	var d_end = formatDate($('input[name="d_end"]').val());
 	var tip_camera_id = $('input[name="tip_camera_id"]').val();
 	if($('input[name="d_start"]').val() == "CHECK IN" || $('input[name="d_end"]').val() == "CHECK OUT") {	
-		alert("Completeaza datele pentru Check-in Check-out si Pret");
+		alert("Completeaza datele pentru Check-in Check-out");
 		e.preventDefault();
 	} else if(Date.parse(d_end) < Date.parse(d_start)) {
 		
 		alert("Ai introdus datele gresit.")
 		e.preventDefault();
 	}
-	$.ajax({
-		url: "<?=base_url()?>camere/vericare_perioada_rezervata/"+d_start+"/"+d_end+"/"+tip_camera_id,		
-		async: false,	
-		success: function(result){ 
-			if(result!="false"){
-				e.preventDefault();	
-				alert(result)
+	if($('input[name="d_start"]').val() != "CHECK IN" && $('input[name="d_end"]').val() != "CHECK OUT") {
+		$.ajax({
+			url: "<?=base_url()?>camere/vericare_perioada_rezervata/"+d_start+"/"+d_end+"/"+tip_camera_id,		
+			async: false,	
+			success: function(result){ 
+				if(result.includes("ocupata")){
+					e.preventDefault();	
+					alert(result)
+				}
 			}
-		}
-	});	
+		});	
+	}
 });
 		$(".videocl").each(function() {
 			$(this).fancybox({
